@@ -19,7 +19,17 @@ import { NotImplementedError } from '../extensions/index.js';
  * }
  */
 
-export default function removeKFromList(/* l, k */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+export default function removeKFromList(l, k) {
+    let head = l;
+
+    while (head && head.value === k) head = head.next;
+
+    let current = head;
+
+    while (current && current.next) {
+        if (current.next.value === k) current.next = current.next.next;
+        else current = current.next;
+    }
+
+    return head;
 }
